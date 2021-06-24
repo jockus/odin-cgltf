@@ -15,21 +15,21 @@ foreign cgltf {
         options : ^Options,
         data : rawptr,
         size : uint,
-        out_data : ^^Data
+        out_data : ^^Data,
     ) -> Result ---;
 
     @(link_name="cgltf_parse_file")
     parse_file :: proc(
         options : ^Options,
         path : cstring,
-        out_data : ^^Data
+        out_data : ^^Data,
     ) -> Result ---;
 
     @(link_name="cgltf_load_buffers")
     load_buffers :: proc(
         options : ^Options,
         data : ^Data,
-        gltf_path : cstring
+        gltf_path : cstring,
     ) -> Result ---;
 
     @(link_name="cgltf_load_buffer_base64")
@@ -37,7 +37,7 @@ foreign cgltf {
         options : ^Options,
         size : uint,
         base64 : cstring,
-        out_data : ^rawptr
+        out_data : ^rawptr,
     ) -> Result ---;
 
     @(link_name="cgltf_decode_uri")
@@ -52,13 +52,13 @@ foreign cgltf {
     @(link_name="cgltf_node_transform_local")
     node_transform_local :: proc(
         node : ^Node,
-        out_matrix : ^_c.float
+        out_matrix : ^_c.float,
     ) ---;
 
     @(link_name="cgltf_node_transform_world")
     node_transform_world :: proc(
         node : ^Node,
-        out_matrix : ^_c.float
+        out_matrix : ^_c.float,
     ) ---;
 
     @(link_name="cgltf_accessor_read_float")
@@ -66,7 +66,7 @@ foreign cgltf {
         accessor : ^Accessor,
         index : uint,
         out : ^_c.float,
-        element_size : uint
+        element_size : uint,
     ) -> _c.int ---;
 
     @(link_name="cgltf_accessor_read_uint")
@@ -74,13 +74,13 @@ foreign cgltf {
         accessor : ^Accessor,
         index : uint,
         out : ^_c.uint,
-        element_size : uint
+        element_size : uint,
     ) -> _c.int ---;
 
     @(link_name="cgltf_accessor_read_index")
     accessor_read_index :: proc(
         accessor : ^Accessor,
-        index : uint
+        index : uint,
     ) -> uint ---;
 
     @(link_name="cgltf_num_components")
@@ -90,7 +90,7 @@ foreign cgltf {
     accessor_unpack_floats :: proc(
         accessor : ^Accessor,
         out : ^_c.float,
-        float_count : uint
+        float_count : uint,
     ) -> uint ---;
 
     @(link_name="cgltf_copy_extras_json")
@@ -98,7 +98,7 @@ foreign cgltf {
         data : ^Data,
         extras : ^Extras,
         dest : cstring,
-        dest_size : ^uint
+        dest_size : ^uint,
     ) -> Result ---;
 
 }
